@@ -1,10 +1,14 @@
 import React from 'react';
 
+import SearchContainer from '../Containers/SearchContainer';
+import ResultsContainer from '../Containers/ResultsContainer';
+
 class App extends React.Component {
   render(){
     return (
       <div>
-        Content goes here
+        <SearchContainer/>
+        <ResultsContainer/>
       </div>
     )
   }

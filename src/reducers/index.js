@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import placeholder from './placeholder';
+import characterInput from './characterInput';
+import charactersResults from './charactersResults'
 
 export default combineReducers({
-  placeholder
+  characterInput,
+  charactersResults
 });
