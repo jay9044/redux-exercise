@@ -6,20 +6,27 @@ export function setCharacterString(characterString){
     };
 };
 
-export function receiveResults(body){
-   
+export function setCategoryString(categoryString){
+    console.log('SET_CATEGORY_STRING', categoryString)
     return {
-    type: 'RECEIVE_CHARACTERS',
-    characters: body.results
+        type: 'SET_CATEGORY_STRING',
+        categoryString
+    };
+};
+
+export function receiveResult(body){
+    return {
+        type: 'RECEIVE_CHARACTER',
+        character: body.results
     }
 }
 
-export function fetchCharacters(characterString){
+export function fetchCharacters(characterString, categoryString){
     return function(dispatch, getState){
-        fetch(`https://swapi.co/api/people/?search=${characterString}`)
+        fetch(`https://swapi.co/api/${categoryString}/?search=${characterString}`)
         .then(response => response.json())
         .then(body => {
-            dispatch(receiveResults(body))
+            dispatch(receiveResult(body))
             dispatch(setCharacterString(""))
         })
         .catch(function(error){

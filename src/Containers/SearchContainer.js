@@ -1,21 +1,22 @@
 import { connect } from 'react-redux'
 import Search from '../components/Search'
-import { setCharacterString, fetchCharacters } from '../actions';
+import { setCharacterString, setCategoryString, fetchCharacters } from '../actions';
 
 
 const mapStateToProps = state => {
     return {
-        characterString: state.characterInput
+        characterString: state.characterInput,
+        categoryString: state.categoryInput
     }
 }
 
-
 const mapDispatchToProps = dispatch => {
     return {
-        handleChange: characterString => dispatch(setCharacterString(characterString)) ,
-        submitSearch: (characterString) => {
-            console.log(characterString)
-            dispatch(fetchCharacters(characterString))
+        handleChange: characterString => dispatch(setCharacterString(characterString)),
+        handleSelect: categoryString => dispatch(setCategoryString(categoryString)),
+        submitSearch: (characterString, categoryString) => {
+            // console.log(characterString)
+            dispatch(fetchCharacters(characterString, categoryString))
         }
     }
 }

@@ -1,13 +1,32 @@
 import React from 'react';
 
-function Search({characterString, handleChange , submitSearch}){
+function Search({characterString, categoryString, handleChange, submitSearch, handleSelect}){
     return(
         <form onSubmit={(event) => {
-        event.preventDefault()
-        submitSearch(characterString)
+            event.preventDefault()
+            submitSearch(characterString, categoryString)
         }}> 
-        <label>Search</label>
-            <input type='text' onChange={(event) => handleChange(event.target.value)} value={characterString}/>
+
+             <select 
+                value={categoryString}
+                onChange={event => handleSelect(event.target.value)} 
+                >
+                <option value="people">People</option>
+                <option value="vehicles">vehicles</option>
+                <option value="planets">planets</option>
+                <option value="films">films</option>
+                <option value="species">species</option>
+                <option value="starships">starships</option> 
+            </select>
+
+            <label>Search</label>
+            <input 
+                type='text'
+                value={characterString}
+                onChange={ event => handleChange(event.target.value) }
+            />
+
+
         </form>
     )
  }
